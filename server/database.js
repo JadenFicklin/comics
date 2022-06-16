@@ -28,6 +28,12 @@ app.post("/api/register", async (req, res) => {
     .then((result) => res.send(result[0]).status(200));
 });
 
+app.get("/api/getnames", async (req, res) => {
+  return sequelize
+    .query(`SELECT * FROM users`)
+    .then((result) => res.send(result[0]).status(200));
+});
+
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
