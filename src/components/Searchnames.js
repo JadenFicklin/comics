@@ -5,17 +5,21 @@ function Searchnames() {
   const [find, setFind] = useState("");
   const [names, setNames] = useState([]);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     e.preventDefault();
-    setFind(e.target.value);
+    const search = e.target.value;
+    setFind(search);
 
-    axios({
+    const res = await axios({
       method: "POST",
       url: "http://localhost:5000/api/searchbar",
       data: {
-        find: find,
+        find: search,
       },
-    }).then((res) => setNames(res.data));
+    });
+
+    const filteredNames = search ? res.data : [];
+    setNames(filteredNames);
   };
 
   const holdNames = [];
