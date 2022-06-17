@@ -37,6 +37,7 @@ function Searchnames() {
       {holdNames.map((e) => (
         <h1>{e}</h1>
       ))}
+      <div className="searchbar"></div>
     </>
   );
 }

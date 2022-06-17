@@ -3,9 +3,11 @@ import React, { useState } from "react";
 
 function Getpasswords() {
   const [passwords, setPasswords] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
+    setClicked(!clicked);
     axios({
       method: "GET",
       url: "http://localhost:5000/api/getpasswords",
@@ -20,9 +22,7 @@ function Getpasswords() {
   return (
     <>
       <button onClick={handleClick}>get passwords</button>
-      {holdPasswords.map((e) => (
-        <h1>{e}</h1>
-      ))}
+      {clicked ? holdPasswords.map((e) => <h1>{e}</h1>) : []}
     </>
   );
 }
