@@ -19,6 +19,7 @@ const sequelize = new Sequelize(DATABASE_URL, {
 });
 
 // endpoints;
+//register
 app.post("/api/register", async (req, res) => {
   const { username, password } = req.body;
   return sequelize
@@ -28,15 +29,25 @@ app.post("/api/register", async (req, res) => {
     .then((result) => res.send(result[0]).status(200));
 });
 
+//getnames
 app.get("/api/getnames", async (req, res) => {
   return sequelize
     .query(`SELECT * FROM users`)
     .then((result) => res.send(result[0]).status(200));
 });
 
+//getpasswords
 app.get("/api/getpasswords", async (req, res) => {
   return sequelize
     .query(`SELECT * FROM users`)
+    .then((result) => res.send(result[0]).status(200));
+});
+
+//post searchbar
+app.post("/api/searchbar", async (req, res) => {
+  const { find } = req.body;
+  return await sequelize
+    .query(`SELECT * FROM users WHERE username LIKE '%${find}%'`)
     .then((result) => res.send(result[0]).status(200));
 });
 

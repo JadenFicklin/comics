@@ -2,6 +2,7 @@ import "./App.css";
 import Getnames from "./components/Getnames";
 import Getpasswords from "./components/Getpasswords";
 import Register from "./components/Register";
+import Searchnames from "./components/Searchnames";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Register />
       <Getnames />
       <Getpasswords />
+      <Searchnames />
     </>
   );
 }
