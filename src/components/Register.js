@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [button, setButton] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +16,14 @@ function Register() {
         password: password,
       },
     }).then((res) => console.log(res.data));
+    setButton(true);
   };
 
+  if (button) {
+    console.log("true!");
+  } else {
+    console.log("false!");
+  }
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -30,7 +37,10 @@ function Register() {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
+        {button ? (
+          <div className="account-created">account created!</div>
+        ) : null}
       </form>
     </>
   );

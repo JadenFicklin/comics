@@ -1,3 +1,7 @@
 .searchbar {
   margin-bottom: 500px;
 }
+.account-created {
+  background-color: yellow;
+  width: 110px;
+}
