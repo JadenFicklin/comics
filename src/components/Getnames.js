@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Getnames() {
   const [names, setNames] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const holdNames = [];
   for (let i = 0; i < names.length; i++) {
@@ -12,6 +13,7 @@ function Getnames() {
 
   const handleClick = (e) => {
     e.preventDefault();
+    setClicked(!clicked);
     axios({
       method: "GET",
       url: "http://localhost:5000/api/getnames",
@@ -21,9 +23,7 @@ function Getnames() {
   return (
     <>
       <button onClick={handleClick}>get names</button>
-      {holdNames.map((e) => (
-        <h1>{e}</h1>
-      ))}
+      {clicked ? holdNames.map((e) => <h1>{e}</h1>) : []}
     </>
   );
 }
