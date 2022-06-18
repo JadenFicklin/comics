@@ -1,32 +1,32 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Register() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [button, setButton] = useState(false);
+  const [holdArray, setHoldArray] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState("false");
+  const [loggedInName, setLoggedInName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/register",
+      url: "http://localhost:5000/api/login",
       data: {
         username: username,
         password: password,
       },
-    }).then((res) => console.log(res.data));
-    setButton(true);
+    }).then((res) => setHoldArray(res.data));
+
+    setIsLoggedIn(holdArray[0]);
+    setLoggedInName(holdArray[1]);
+    console.log(isLoggedIn);
   };
 
-  if (button) {
-    console.log("true!");
-  } else {
-    console.log("false!");
-  }
   return (
     <>
-      <div className="register">create account</div>
+      <div>login</div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -38,13 +38,15 @@ function Register() {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
-        {button ? (
-          <div className="account-created">account created!</div>
-        ) : null}
+        <button>Login</button>
       </form>
+      {isLoggedIn ? (
+        <div className="login">Logged in as {loggedInName}!</div>
+      ) : (
+        <div>Incorrect username or password!</div>
+      )}
     </>
   );
 }
 
-export default Register;
+export default Login;

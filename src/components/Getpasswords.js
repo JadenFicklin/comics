@@ -22,7 +22,7 @@ function Getpasswords() {
   return (
     <>
       <button onClick={handleClick}>get passwords</button>
-      {clicked ? holdPasswords.map((e) => <h1>{e}</h1>) : []}
+      {clicked ? holdPasswords.map((e) => <h4>{e}</h4>) : []}
     </>
   );
 }

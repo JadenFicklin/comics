@@ -28,6 +28,21 @@ app.post("/api/register", async (req, res) => {
     )
     .then((result) => res.send(result[0]).status(200));
 });
+//login
+app.post("/api/login", async (req, res) => {
+  const { username, password } = req.body;
+  let number = [];
+  const selectname = await sequelize.query(
+    `SELECT * FROM users WHERE username='${username}' AND password='${password}'`
+  );
+
+  if (selectname[0].length === 1) {
+    number = true;
+  } else {
+    number = false;
+  }
+  res.send([number, username]).status(200);
+});
 
 //getnames
 app.get("/api/getnames", async (req, res) => {

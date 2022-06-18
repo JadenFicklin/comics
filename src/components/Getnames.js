@@ -23,7 +23,7 @@ function Getnames() {
   return (
     <>
       <button onClick={handleClick}>get names</button>
-      {clicked ? holdNames.map((e) => <h1>{e}</h1>) : []}
+      {clicked ? holdNames.map((e) => <h4>{e}</h4>) : []}
     </>
   );
 }
