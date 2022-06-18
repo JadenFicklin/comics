@@ -10,7 +10,7 @@ function Getpasswords() {
     setClicked(!clicked);
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/getpasswords",
+      url: "http://comics-marketplace.herokuapp.com/api/getpasswords",
     }).then((res) => setPasswords(res.data));
   };
 

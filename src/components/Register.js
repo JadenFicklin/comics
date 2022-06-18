@@ -10,7 +10,7 @@ function Register() {
     e.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/register",
+      url: "http://comics-marketplace.herokuapp.com/api/register",
       data: {
         username: username,
         password: password,

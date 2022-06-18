@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/login",
+      url: "http://comics-marketplace.herokuapp.com/api/login",
       data: {
         username: username,
         password: password,

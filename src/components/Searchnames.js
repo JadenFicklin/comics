@@ -12,7 +12,7 @@ function Searchnames() {
 
     const res = await axios({
       method: "POST",
-      url: "http://localhost:5000/api/searchbar",
+      url: "http://comics-marketplace.herokuapp.com/api/searchbar",
       data: {
         find: search,
       },

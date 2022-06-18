@@ -16,7 +16,7 @@ function Getnames() {
     setClicked(!clicked);
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/getnames",
+      url: "http://comics-marketplace.herokuapp.com/api/getnames",
     }).then((res) => setNames(res.data));
   };
 
